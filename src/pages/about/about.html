@@ -1,0 +1,58 @@
+<!--
+  Generated template for the AboutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tiffany">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>О ТГ «Таир»</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-grey bg-img">
+
+  <ion-card>
+    <ion-slides [pager]="true" [zoom]="true" [slidesPerView]="1">
+      <ion-slide *ngFor="let item of slider1">
+        <img-preload class="slide-img" [img]="item.img"></img-preload>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content padding>
+      <div>
+        <b>Торговый город «ТАИР»</b> - это семейноразвлекательный торговый центр, ориентированный на массового покупателя со средним и ниже среднего уровнем дохода.
+      </div>
+      <div margin-top>
+        На сегодняшний день, общая площадь Торгового Города «ТАИР» составляет <b>70 000 квадратных метров</b>. Что делает его самым крупнейшим ТРЦ в г. Караганде.
+      </div>
+      <div margin-top>
+        Площадь магазинов составляет <b>38 000 квадратных метров</b>. Оригинальными составляющими в торговом городе «ТАИР» являются: детский развлекательный центр «Safari Park», фастфуд зоны, аттракционы.
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+  <section class="card-background-page">
+    <ion-card color="blue">
+      <ion-card-header text-wrap>
+        Крупные сети магазинов в торговом городе «ТАИР»
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card *ngFor="let item of shops">
+      <img-preload class="w-100" [img]="item.img"></img-preload>
+      <div class="card-title">{{item.title}}</div>
+    </ion-card>
+
+  </section>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="tiffany">
+    <button ion-button menuToggle icon-only color="light">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title color="light">Арендаторы</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="light" padding-right (click)="openFilterShop()">
+        <ion-icon slot="icon-only" name="funnel"></ion-icon>
+      </button>
+      <button ion-button icon-only [navPush]="searchPage" color="light">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-img">
+
+  <ion-grid *ngIf="!preloader">
+    <ion-row>
+      <ion-col col-6 col-md-4 col-lg-3 *ngFor="let item of items" no-padding>
+        <ion-card (click)="onClick(item)" class="card-border-bottom">
+          <ion-card-content no-padding>
+            <ion-thumbnail>
+              <img-preload [img]="item.preview_frontpage" [ratio]="'cap'"></img-preload>
+            </ion-thumbnail>
+          </ion-card-content>
+          <ion-card-header no-padding padding-vertical>
+            <ion-title no-padding>{{item.title}}</ion-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-spinner id="preloader" *ngIf="preloader"></ion-spinner>
+
+</ion-content>
+

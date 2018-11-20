@@ -1,0 +1,21 @@
+ion-menu{
+  ion-icon{
+    color: map-get($colors, blue);
+  }
+}
+
+#tabs {
+  .tab-button{
+    background: map-get($colors, tiffany);
+    color: map-get($colors, light) !important;
+    margin: 5px;
+    border-radius: 4px;
+    transition: box-shadow 0.5s;
+    &[aria-selected="true"]{
+      box-shadow: inset 0px 0px 14px 0px #444;
+    }
+    ion-icon{
+      color: map-get($colors, light) !important;
+    }
+  }
+}

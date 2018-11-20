@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ProductsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tiffany">
+    <ion-title>{{item.title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="searchPage">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg-img">
+
+  <ion-card class="products-filter-buttons" *ngIf="!preloader">
+    <button ion-button full clear color="dark" (click)="onClickSort()">
+      <ion-icon name="swap" class="rotate-swap" color="tiffany" item-start padding-right></ion-icon>
+      Сортировка
+    </button>
+    <button ion-button full clear color="dark" class="border-left" (click)="onClickFilter()">
+      <ion-icon name="funnel" color="tiffany" item-start padding-right></ion-icon>
+      Фильтр
+    </button>
+  </ion-card>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!preloader">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="!preloader">
+    <ion-grid *ngIf="products?.length">
+      <ion-row>
+        <ion-col col-6 col-md-4 col-lg-3 *ngFor="let item of products" no-padding>
+          <ion-card (click)="onClick(item)" class="card-border-bottom">
+            <ion-card-content no-padding>
+              <ion-thumbnail>
+                <img-preload [img]="item.images[0]"></img-preload>
+              </ion-thumbnail>
+            </ion-card-content>
+            <ion-card-header no-padding padding-vertical>
+              <ion-title no-padding>{{item.title}}</ion-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!preloader">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-spinner id="preloader" *ngIf="preloader"></ion-spinner>
+
+</ion-content>

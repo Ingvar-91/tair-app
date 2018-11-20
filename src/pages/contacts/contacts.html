@@ -1,0 +1,79 @@
+<!--
+  Generated template for the ContactsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tiffany">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Контакты</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-img">
+
+  <section *ngIf="!preloader">
+    <ion-card>
+      <ion-card-header text-wrap>
+        Торговый Город «Таир»
+        <br>
+        ИП «Асим»
+      </ion-card-header>
+
+      <ion-card-content>
+        <b>Контактные данные:</b>
+        <br>
+        Тел. <a href="tel:8 (7212) 43-70-14">8 (7212) 43-70-14</a> - (Администрация),
+        <br>
+        <a href="tel:43-35-32">43-35-32</a> - (Приемная)
+        <hr>
+        Email: <a href="mailto:arenda@tair.shop">tair-2006@mail.ru</a>
+        <br>
+        Email: <a href="mailto:arenda@tair.shop">arenda@tair.shop</a>
+        <hr>
+        г. Караганда, ул. Космонавтов 1B
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header text-wrap>
+        Виртуальный Торговый Центр (ВТЦ)
+        <br>
+        Интернет - Компания «LIBERTAS GROUP»
+      </ion-card-header>
+      <ion-card-content>
+        Контактные данные:
+        <br>
+        Отдел обслуживания и продаж.
+        <br>
+        Тел.: <a href="tel:8 (7212) 50-25-24">8 (7212) 50-25-24</a>,
+        <a href="tel:8-700-43-43-002">8-700-43-43-002</a>
+        <br>
+        Сот. тел. <a href="tel:8-702-53-19-799">8-702-53-19-799</a>
+        <hr>
+        e-mail: <a href="mailto:info@tair.shop">info@tair.shop</a>
+        <br>
+        e-mail: <a href="mailto:head@libertas.kz">head@libertas.kz</a>
+        <hr>
+        г. Караганда, ул. Космонавтов 1B, офис 76, 79
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content no-padding>
+        <div id="map" #map></div>
+      </ion-card-content>
+    </ion-card>
+  </section>
+
+  <ion-spinner id="preloader" *ngIf="preloader"></ion-spinner>
+
+</ion-content>

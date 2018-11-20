@@ -1,0 +1,134 @@
+$font-family-base: Arial,Tahoma,Helvetica,'Liberation Sans',sans-serif !default;
+
+#network-message{
+  background: map-get($colors, red-400);
+  color: #ffffff;
+  display: block;
+  position: fixed;
+  top: 5.2rem;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  text-align: center;
+  margin: 9px;
+  font-size: 2rem;
+  padding: 6px 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.modal-full-screen{
+  .modal-wrapper{
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+ion-slides{
+  height: auto !important;
+}
+
+.w-100{
+  width: 100% !important;
+}
+
+img{
+  width: 100%;
+}
+
+#preloader{
+  margin: auto;
+  display: flex;
+  height: 100%;
+}
+
+.card-border-bottom{
+  border-bottom: 2px solid map-get($colors, tiffany);
+}
+
+.border-bottom{
+  border-bottom: 1px solid map-get($colors, grey);
+}
+
+.bg-grey{
+  /*background-color: map-get($colors, lightGrey) !important;*/
+}
+
+.border-bottom-grey:nth-child(odd) {
+  background: map-get($colors, lightGrey);
+}
+
+ion-card{
+  border-radius: 0 !important;
+}
+
+.ion-card-section-blue{
+  ion-card-header{
+    background-color: map-get($colors, tiffany) !important;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+}
+
+.bg-img{
+  background-image: url('../assets/bg.jpg');
+  background-color: transparent !important;
+  background-position: left top;
+  background-repeat: repeat;
+}
+
+.card-md{
+  box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.18), 0 2px 8px 1px rgba(0, 0, 0, 0.16) !important;
+}
+
+.ion-slide-button{
+  position: absolute;
+  z-index: 100;
+  background: none;
+  border: 0;
+  outline: 0;
+  top: 50%;
+  font-size: 2.5rem;
+  margin-top: -16px;
+  opacity: 0.8;
+  &.ion-slide-button-next{
+    right: 0;
+  }
+  &.ion-slide-button-prev{
+    left: 0;
+  }
+}
+
+.slide-img{
+  img{
+    width: 100% !important;
+  }
+}
+
+/* swiper-pagination */
+.swiper-pagination{
+  .swiper-pagination-bullet {
+    opacity: .35;
+    margin: 0 3px !important;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: map-get($colors, orange) !important;
+    opacity: 1;
+  }
+}
+
+/**/
+.d-flex{
+  display: flex;
+}
+
+.position-relative{
+  position: relative;
+}
+
+.line-through{
+  text-decoration: line-through;
+}

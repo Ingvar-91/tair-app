@@ -1,0 +1,46 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tiffany">
+    <ion-title>Поиск</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg-grey bg-img">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="form">
+    <ion-searchbar text="Назад" formControlName="search" placeholder="Поиск..." showCancelButton="true" (ionInput)="onInput($event)"></ion-searchbar>
+  </form>
+
+  <ion-grid *ngIf="items?.length">
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of items" no-padding>
+        <ion-card (click)="onClick(item)" class="card-border-bottom">
+          <ion-card-content no-padding>
+            <ion-thumbnail>
+              <img-preload [img]="item.images[0]"></img-preload>
+            </ion-thumbnail>
+          </ion-card-content>
+          <ion-card-header no-padding padding-vertical>
+            <ion-title no-padding>{{item.title}}</ion-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

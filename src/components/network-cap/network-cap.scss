@@ -1,0 +1,36 @@
+network-cap {
+
+}
+
+#network-cap{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: map-get($colors, light);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s linear;
+  &.show{
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  ion-icon{
+    color: #444444;
+    font-size: 6rem;
+  }
+
+  .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+  }
+}

@@ -1,0 +1,36 @@
+<!--
+  Generated template for the UserProductCharsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tiffany">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Добавить характеристики</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg-img">
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item *ngFor="let item of chars.child; let i = index">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [(ngModel)]="char[item.id]" color="red-400"></ion-checkbox>
+        </ion-item>
+
+      </ion-list>
+      <button type="button" margin-top ion-button full color="tiffany" (click)="onClick()">Сохранить</button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

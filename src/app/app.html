@@ -1,0 +1,42 @@
+<ion-menu [content]="menu">
+  <ion-content id="ion-menu-content">
+    <ion-thumbnail>
+      <img class="logo" src="assets/logo_a_white.png" alt=""/>
+    </ion-thumbnail>
+    <ion-list>
+      <button menuClose ion-item item-start (click)="showAllContacts()" no-lines detail-none color="dark">
+        <ion-icon name="call" color="light" padding-right></ion-icon>
+        Контактные номера
+      </button>
+      <button menuClose ion-item item-start (click)="showMapFloor()" no-lines detail-none color="dark">
+        <ion-icon name="map" color="light" padding-right></ion-icon>
+        Карта этажей
+      </button>
+      <button menuClose ion-item item-start (click)="showAboutPage()" no-lines detail-none color="dark">
+        <ion-icon name="information-circle" color="light" padding-right></ion-icon>
+        О ТГ «Таир»
+      </button>
+      <button menuClose ion-item item-start (click)="showContactsPage()" no-lines detail-none color="dark">
+        <ion-icon name="pin" color="light" padding-right></ion-icon>
+        Контакты
+      </button>
+      <button menuClose ion-item item-start (click)="showGalleryPage()" no-lines detail-none color="dark">
+        <ion-icon name="images" color="light" padding-right></ion-icon>
+        Фотогалерея
+      </button>
+
+      <button *ngIf="(authServise.auth) && (authServise.user) && (authServise.user.role == 3)" menuClose ion-item item-start (click)="showUserShopsPage()" no-lines detail-none color="dark">
+        <ion-icon name="images" color="light" padding-right></ion-icon>
+        Мои магазины
+      </button>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #menu [root]="rootPage"></ion-nav>
+
+<div id="network-message" *ngIf="networkMessage">
+  <span>Нет соединения с интернетом</span>
+</div>
+

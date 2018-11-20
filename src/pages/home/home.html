@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-navbar color="tiffany">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Главная</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="searchPage">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!preloader">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="!preloader">
+    <section class="position-relative">
+      <ion-slides [pager]="true" [zoom]="true" [slidesPerView]="1" #homeSlides id="homeSlides">
+        <ion-slide *ngFor="let slide of slides">
+          <img-preload [img]="slide" [ratio]="'portrait'"></img-preload>
+        </ion-slide>
+      </ion-slides>
+    </section>
+
+    <!-- Новинки -->
+    <section (window:resize)="onResize($event)" style="margin-top: -0.45rem;" class="bg-img">
+      <ion-toolbar color="tiffany">
+        <ion-title start>Новинки</ion-title>
+        <ion-buttons end>
+          <button color="light" ion-button outline small outline (click)="onClickNoveltyNav()">
+            Все
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-slides [slidesPerView]="slidesPerView" [pager]="false" [zoom]="true" #noveltySlides>
+        <ion-slide *ngFor="let item of productsDay">
+          <ion-card (click)="onClickProduct(item)" class="card-border-bottom">
+            <ion-card-content no-padding>
+              <img-preload [img]="item.images[0]"></img-preload>
+            </ion-card-content>
+            <ion-card-header no-padding padding-vertical>
+              <ion-title no-padding>{{item.title}}</ion-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </section>
+
+    <!-- Топ магазинов -->
+    <section class="bg-img">
+      <ion-toolbar color="tiffany">
+        <ion-title start>Топ магазинов</ion-title>
+        <ion-buttons end>
+          <button color="light" ion-button outline small outline (click)="onClickTopShopNav()">
+            Все
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-slides [slidesPerView]="slidesPerView" [pager]="false" [zoom]="true" #topShopSlides>
+        <ion-slide *ngFor="let item of shopsTop">
+          <ion-card (click)="onClickShop(item)" class="card-border-bottom">
+            <ion-card-content no-padding>
+              <img-preload [img]="item.preview_frontpage"></img-preload>
+            </ion-card-content>
+            <ion-card-header no-padding padding-vertical>
+              <ion-title no-padding>{{item.title}}</ion-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </section>
+
+    <!-- Популярные места -->
+    <section class="bg-img">
+      <ion-toolbar color="tiffany">
+        <ion-title start>Популярные места</ion-title>
+        <ion-buttons end>
+          <button color="light" ion-button outline small outline (click)="onClickEntPlacesNav()">
+            Все
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-slides [slidesPerView]="slidesPerView" [pager]="false" [zoom]="true">
+        <ion-slide *ngFor="let item of entertainmentPlaces">
+          <ion-card (click)="onClickShop(item)" class="card-border-bottom">
+            <ion-card-content no-padding>
+              <img-preload [img]="item.preview_frontpage"></img-preload>
+            </ion-card-content>
+            <ion-card-header no-padding padding-vertical>
+              <ion-title no-padding>{{item.title}}</ion-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </section>
+
+    <!-- Бренды -->
+    <section class="bg-img">
+      <ion-toolbar color="tiffany">
+        <ion-title start>Бренды</ion-title>
+        <ion-buttons end>
+          <button color="light" ion-button outline small outline (click)="onClickBrandsNav()">
+            Все
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-slides [slidesPerView]="slidesPerView" [pager]="false" [zoom]="true" #brandsSlides>
+        <ion-slide *ngFor="let item of brands">
+          <ion-card>
+            <ion-card-content no-padding>
+              <img src="{{item}}" alt=""/>
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </section>
+  </div>
+
+  <ion-spinner id="preloader" *ngIf="preloader"></ion-spinner>
+
+</ion-content>

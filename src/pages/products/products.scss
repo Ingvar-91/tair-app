@@ -1,0 +1,20 @@
+page-products {
+
+}
+
+.products-filter-buttons {
+  margin: 10px 16px 0 16px !important;
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+  display: flex;
+  width: auto;
+  .border-left{
+    border-left: 1px solid map-get($colors, tiffany);
+  }
+}
+
+.rotate-swap{
+  &:before{
+    transform: rotate(90deg);
+  }
+}

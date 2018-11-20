@@ -1,0 +1,18 @@
+<div id="network-cap" [ngClass]="{'show':!networkCap}">
+  <ion-content>
+    <div class="content" padding>
+      <div text-center margin-bottom>
+        <ion-icon name="globe"></ion-icon>
+      </div>
+      <div margin-bottom>
+        Для работы приложения, необходимо подключение к интернету
+      </div>
+      <!--
+      <div margin-bottom>
+        <button ion-button color="blue" [disabled]="!networkStatus" (click)="onClick()">{{!networkStatus ? 'Нет соединения' : 'Обновить'}}</button>
+      </div>
+      -->
+    </div>
+  </ion-content>
+</div>
+

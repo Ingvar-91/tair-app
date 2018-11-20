@@ -1,0 +1,16 @@
+page-network-offline {
+
+}
+
+#network-offline{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+
+  ion-icon{
+    color: #444444;
+    font-size: 6rem;
+  }
+}
