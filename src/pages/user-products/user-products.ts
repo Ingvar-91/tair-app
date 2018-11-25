@@ -35,12 +35,14 @@ export class UserProductsPage extends BasePage {
 
   params = this.navParams.get('params');
   protected searchPage = SearchPage;
+  protected userProductPage = UserProductPage;
   shop = this.params.shop;
   products;
   infiniteScroll;
   pageNum: number = 1;
 
   ionViewDidLoad() {
+    console.log(this.shop);
     this.checkNetwork(this.navCtrl);
 
     this.subs$[this.subs$.length] =
@@ -56,11 +58,11 @@ export class UserProductsPage extends BasePage {
 
   }
 
-  onClick(item){
+  onClick(item): void{
     this.navCtrl.push(UserProductPage, {params: {product: item}});
   }
 
-  doInfinite(infiniteScroll) {
+  doInfinite(infiniteScroll): void {
     this.infiniteScroll = infiniteScroll;
     this.pageNum = ++this.pageNum;
 
@@ -79,7 +81,7 @@ export class UserProductsPage extends BasePage {
       });
   }
 
-  doRefresh(refresher) {
+  doRefresh(refresher): void {
     this.pageNum = 1;
 
     this.subs$[this.subs$.length] =
@@ -94,6 +96,9 @@ export class UserProductsPage extends BasePage {
       });
   }
 
+  removeProduct(): void {
+
+  }
 
 
 }

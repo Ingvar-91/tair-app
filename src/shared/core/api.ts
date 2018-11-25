@@ -94,8 +94,8 @@ export class Api {
       if(access_token && access_token.token_type && access_token.access_token){
         return {
           headers: new HttpHeaders({
-            'Content-Type':  'application/x-www-form-urlencoded',
-            'Accept':  'application/json',
+            /*'Content-Type': 'application/x-www-form-urlencoded',*/
+            'Accept':'application/json; charset=utf-8',
             'Authorization': `${access_token.token_type} ${access_token.access_token}`
           })
         }

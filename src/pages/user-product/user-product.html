@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="tiffany">
-    <ion-title>{{product?.title}}</ion-title>
+    <ion-title>{{params?.product ? product?.title : 'Добавить товар'}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only [navPush]="searchPage">
         <ion-icon slot="icon-only" name="search"></ion-icon>
@@ -36,6 +36,26 @@
             <ion-textarea formControlName="text"></ion-textarea>
           </ion-item>
 
+          <ion-item no-padding>
+            <ion-label floating>Цена</ion-label>
+            <ion-input type="text" formControlName="price"></ion-input>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-label floating>Скидка</ion-label>
+            <ion-input type="text" formControlName="discount"></ion-input>
+          </ion-item>
+
+          <ion-item no-padding *ngIf="this.form.get('discount').value">
+            <ion-label floating>Дата начала скидки</ion-label>
+            <ion-datetime doneText="Готово" cancelText="Закрыть" max="{{maxDataDiscount}}" displayFormat="YYYY-MM-DD" formControlName="start_discount"></ion-datetime>
+          </ion-item>
+
+          <ion-item no-padding *ngIf="this.form.get('discount').value">
+            <ion-label floating>Дата окончания скидки</ion-label>
+            <ion-datetime doneText="Готово" cancelText="Закрыть" max="{{maxDataDiscount}}" displayFormat="YYYY-MM-DD" formControlName="end_discount"></ion-datetime>
+          </ion-item>
+
         </ion-list>
       </ion-card-content>
     </ion-card>
@@ -57,7 +77,6 @@
       </ion-card-header>
       <ion-card-content>
         {{breadcrumb}}
-        <!--Женщинам > Одежда > Блузы и рубашки > Блузы > Блузы без рукавов-->
       </ion-card-content>
     </ion-card>
 
@@ -79,8 +98,8 @@
           </ion-buttons>
         </ion-item>
 
-        <ion-item no-padding text-left text-wrap *ngIf="item.selected">
-          <span>{{item.selected}}</span>
+        <ion-item no-margin no-padding text-left text-wrap *ngIf="item.selected">
+          <span no-margin>{{item.selected}}</span>
         </ion-item>
       </ion-list>
 
@@ -106,22 +125,22 @@
       </ion-card-header>
       <ion-card-content>
 
-        <img [src]="base64Image" alt=""/>
-
-        <!--<ion-list>
-          <ion-item-divider text-wrap no-padding>
-            <ion-thumbnail item-start>
-              <img src="https://avatarfiles.alphacoders.com/445/44578.jpg" alt=""/>
-            </ion-thumbnail>
-            <h2>89ag7as7g98as.jpg</h2>
-          </ion-item-divider>
-          <ion-item-divider text-wrap no-padding>
-            <ion-thumbnail item-start>
-              <img src="https://avatarfiles.alphacoders.com/445/44578.jpg" alt=""/>
-            </ion-thumbnail>
-            <h2>89ag7as7g98as.jpg</h2>
-          </ion-item-divider>
-        </ion-list>-->
+        <ion-list>
+          <ion-item-sliding *ngFor="let item of imagesProducts; let i = index">
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img-preload [img]="item.fullPath"></img-preload>
+              </ion-thumbnail>
+              <h2>Фото {{i + 1}}</h2>
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="danger" (click)="removeImage(item.fileName, i)">
+                <ion-icon name="trash"></ion-icon>
+                Удалить
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
 
       </ion-card-content>
     </ion-card>

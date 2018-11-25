@@ -18,7 +18,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+
+  <ion-list *ngIf="!preloader">
 
     <button ion-item text-wrap *ngFor="let item of categories" (click)="onClick(item)">
       <ion-thumbnail item-start>
@@ -28,4 +29,7 @@
     </button>
 
   </ion-list>
+
+  <ion-spinner id="preloader" *ngIf="preloader"></ion-spinner>
+
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, ModalController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {BasePage} from "../../shared/base.page";
+import {UserProductsService} from "../../shared/servises/user-products.servise";
 
 /**
  * Generated class for the UserProductCategoriesPage page.
@@ -21,15 +22,22 @@ export class UserProductCategoriesPage extends BasePage {
     public navParams: NavParams,
     protected alertCtrl: AlertController,
     public viewCtrl: ViewController,
+    protected userProductsService: UserProductsService,
   ) {
     super(alertCtrl);
   }
 
-  categories = this.navParams.get('categories');
+  //categories = this.navParams.get('categories');
+  categories;
   breadcrumb: string = '';
 
   ionViewDidLoad() {
-
+    this.subs$[this.subs$.length] =
+      this.userProductsService.getCategories()
+        .subscribe((data) => {
+          this.categories = data.categories;
+          this.disablePreloader();
+        });
   }
 
   onClick(item){

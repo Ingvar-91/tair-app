@@ -26,14 +26,52 @@ export class UserProductCharsPage extends BasePage {
   }
 
   chars = this.navParams.get('chars');
-  char = [];
+  charArr = [];
 
   ionViewDidLoad() {
+    console.log(this.chars);
   }
 
-  onClick() {
-    this.viewCtrl.dismiss({chars:Object.keys(this.char)});
+  onClick(): void {
+    let chars = this.chars;
+    let charArr = Object.keys(this.charArr);
+    let selected = [];
+    if(chars.child) {
+      for (let child of chars.child) {
+        child.check = false;
+      }
+
+      for (let child of chars.child) {
+        for (let id of charArr) {
+          if(child.id == id){
+            child.check = true;
+            selected.push(child.title);
+          }
+        }
+      }
+    }
+
+    this.viewCtrl.dismiss({chars:chars, selected: selected.join(', ')});
   }
+
+  clear(): void{
+    let chars = this.chars;
+    for (let child of chars.child) {
+      child.check = false;
+    }
+    this.viewCtrl.dismiss({chars:chars, selected: ''});
+  }
+
+  /*
+  checked(event, item): void {
+    if(!item.check){
+      item.check = true;
+    } else {
+      item.check = false;
+    }
+  }
+  */
+
 
 
 }

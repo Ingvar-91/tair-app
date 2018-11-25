@@ -12,18 +12,22 @@
       <button ion-button icon-only [navPush]="searchPage">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </button>
+      <button ion-button icon-only [navPush]="userProductPage" [navParams]="{shop: shop}">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content class="bg-img">
+<ion-content>
 
   <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!preloader">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <div *ngIf="!preloader">
+
+    <!--
     <ion-grid *ngIf="products?.length">
       <ion-row>
         <ion-col col-6 col-md-4 col-lg-3 *ngFor="let item of products" no-padding>
@@ -40,7 +44,25 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+    -->
+
+  <ion-list *ngIf="!preloader">
+    <ion-item-sliding *ngFor="let item of products" (click)="onClick(item)">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img-preload [img]="item.images ? item.images[0] : ''"></img-preload>
+        </ion-thumbnail>
+        <h2>{{item.title}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="removeProduct(item)">
+          <ion-icon name="trash"></ion-icon>
+          Удалить
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!preloader">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>

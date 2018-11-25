@@ -4,7 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 export const environment = {
   production: false,
-  apiUrl: '//127.0.0.1:8000/api/v1/',
+  //apiUrl: '//127.0.0.1:8000/api/v1/',
+  apiUrl: '//tair.shop/api/v1/',
   imgNotFound: 'assets/no-image-1x1.jpg',
   accessToken: 'ILs1C9wL4leAHbMHu6zgdj2SiSCdmy5J',
   mapFloor: [

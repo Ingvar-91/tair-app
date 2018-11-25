@@ -26,7 +26,7 @@ export class AuthPage extends BasePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private authServise: AuthServise,
+    public authServise: AuthServise,
     protected alertCtrl: AlertController
   ) {
     super(alertCtrl);

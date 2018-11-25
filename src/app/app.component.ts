@@ -34,7 +34,7 @@ export class MyApp implements OnDestroy {
     public events: Events,
     private network: Network,
     private alertCtrl: AlertController,
-    private authServise: AuthServise,
+    public authServise: AuthServise,
   ){
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -61,7 +61,6 @@ export class MyApp implements OnDestroy {
         this.authServise.user = data.user;
         this.authServise.auth = true;
       },err => {
-        console.log(err);
         this.authServise.auth = false;
       },() => {});
   }

@@ -41,7 +41,7 @@
           <ion-card (click)="onClick(item)" class="card-border-bottom">
             <ion-card-content no-padding>
               <ion-thumbnail>
-                <img-preload [img]="item.images[0]"></img-preload>
+                <img-preload [img]="item.images ? item.images[0] : ''"></img-preload>
               </ion-thumbnail>
             </ion-card-content>
             <ion-card-header no-padding padding-vertical>

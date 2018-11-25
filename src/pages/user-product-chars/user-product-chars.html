@@ -25,11 +25,22 @@
 
         <ion-item *ngFor="let item of chars.child; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [(ngModel)]="char[item.id]" color="red-400"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="charArr[item.id]" color="red-400"></ion-checkbox>
+          <!--<ion-checkbox checked="{{item.check ? true : false}}" (ionChange)="checked($event, item)" color="red-400"></ion-checkbox>-->
         </ion-item>
 
       </ion-list>
-      <button type="button" margin-top ion-button full color="tiffany" (click)="onClick()">Сохранить</button>
+
+      <ion-grid margin-top>
+        <ion-row>
+          <ion-col>
+            <button type="button" ion-button full color="red-400" (click)="clear()">Очистить</button>
+          </ion-col>
+          <ion-col>
+            <button type="button" ion-button full color="tiffany" (click)="onClick()">Сохранить</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
 
